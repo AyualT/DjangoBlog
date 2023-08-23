@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+         <div class="post_card">
+            <div class="top">
+                <div class="post_title">
+                    <p><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a></p>
+                </div>
+                <div class="publish_date">
+                    <p>{{post.time_published}}</p>
+                </div>
+            </div>
+            <div class="content">
+                <p>{{post.text|linebreaks}}</p>
+                <img src="media/{{post.image}}" alt="">
+            </div>
+            <div class="author">
+                <p>posted by: {{post.author}}</p>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
